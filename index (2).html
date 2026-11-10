@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venme Dairy | Coming Soon</title>
+  <style>
+    /* Base Resets & Brand Background */
+    body, html {
+      margin: 0;
+      padding: 0;
+      /* Use dynamic viewport height to fix mobile browser toolbar overlap */
+      min-height: 100dvh; 
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      background-color: #F7F4EB; /* Venme Warm Cream */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden; /* Prevent horizontal scroll from leaves */
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    /* Fluid Video Container & Rising Animation */
+    .illustration-container {
+      position: relative;
+      /* Scales fluidly on small screens, caps out nicely on desktop */
+      width: 90%;
+      max-width: 600px;
+      padding: 0;
+      box-sizing: border-box;
+      /* The Rising Natural Animation */
+      animation: riseUp 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+      transform: translateY(80px);
+      z-index: 10;
+    }
+
+    .illustration-container video {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(18, 64, 38, 0.15);
+      background-color: #EBF1ED; /* Placeholder color before video loads */
+      display: block; /* Removes bottom spacing ghost margin */
+    }
+
+    /* Text Fade-in Animation */
+    .text-container {
+      margin-top: clamp(20px, 5vw, 40px);
+      animation: fadeIn 2s ease-in-out 1.2s forwards;
+      opacity: 0;
+      color: #124026; /* Venme Deep Forest Green */
+      padding: 0 20px;
+      z-index: 10;
+    }
+
+    h1 {
+      /* Fluid typography: scales smoothly between 1.5rem and 2.5rem based on screen size */
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      margin-top: 0;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    p {
+      /* Fluid typography: scales smoothly between 1rem and 1.3rem */
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      font-weight: 500;
+      color: #3B7A2E; /* Venme Pasture Green */
+      margin: 0;
+    }
+
+    /* Floating Leaves Particles using SVG Backgrounds (Foreground depth) */
+    .leaf {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%233B7A2E"><path d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,19,6,17,8Z"/></svg>');
+      background-size: cover;
+      opacity: 0;
+      pointer-events: none;
+      animation: floatLeaf linear infinite;
+      z-index: 15;
+    }
+
+    /* Staggered Leaf Starting Positions & Durations based on percentages for responsiveness */
+    .leaf:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0.5s; width: 30px; height: 30px; }
+    .leaf:nth-child(2) { left: 85%; animation-duration: 11s; animation-delay: 2s; }
+    .leaf:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 1.5s; width: 20px; height: 20px; }
+    .leaf:nth-child(4) { left: 75%; animation-duration: 12s; animation-delay: 0s; width: 35px; height: 35px; }
+    .leaf:nth-child(5) { left: 50%; animation-duration: 10s; animation-delay: 3s; }
+    .leaf:nth-child(6) { left: 15%; animation-duration: 14s; animation-delay: 4s; width: 25px; height: 25px; }
+
+    /* Keyframes */
+    @keyframes riseUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatLeaf {
+      0% {
+        transform: translateY(110dvh) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-20dvh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Leaf Elements -->
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+  <div class="leaf"></div>
+
+  <!-- Rising Cow Video Animation -->
+  <div class="illustration-container">
+    <video src="venme will be back.mp4" autoplay loop muted playsinline aria-label="Animated Venme Dairy Cow in Pasture"></video>
+  </div>
+
+  <!-- Fade-in Text -->
+  <div class="text-container">
+    <h1>We are working on something great</h1>
+    <p>and will be online soon.</p>
+  </div>
+
+</body>
+</html>
